@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-sm">
+        <h1 class="text-xl font-bold mb-4">Login</h1>
+        <form id="loginForm" hx-post="/login" hx-target="#response" hx-swap="innerHTML">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" 
+                    required
+                >
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="w-full px-3 py-2 border rounded focus:outline-none focus:ring" 
+                    required
+                >
+            </div>
+            <div id="response" class="text-sm text-red-500 mb-4"></div>
+            <button 
+                type="submit" 
+                class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+                Login
+            </button>
+        </form>
+    </div>
+</body>
+</html>

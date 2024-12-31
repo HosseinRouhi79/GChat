@@ -1,0 +1,5 @@
+{"level":"info","ts":"2024-12-30T18:07:17.664+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2024-12-30T18:07:17.695+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2024-12-30T18:07:20.399+0330","msg":"failed to get from redis:[redis: nil]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2024-12-30T18:07:20.408+0330","msg":"data set successfully","AppName":"myApp","LoggerName":"Zap","Category":"Internal","SubCategory":"Insert"}
+{"level":"info","ts":"2024-12-30T18:07:20.412+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/send-otp","Latency":0.023898102,"Category":"RequestResponse","SubCategory":"Api"}

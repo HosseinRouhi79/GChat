@@ -1,0 +1,178 @@
+definitions:
+  helper.HTTPResponse:
+    properties:
+      error: {}
+      result: {}
+      resultCode:
+        type: string
+      success:
+        type: boolean
+      validationErrors:
+        items:
+          $ref: '#/definitions/validation.ValidationError'
+        type: array
+    type: object
+  validation.ValidationError:
+    properties:
+      message:
+        type: string
+      property:
+        type: string
+      tag:
+        type: string
+      value:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /claim/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register Login
+      parameters:
+      - description: jwt token
+        in: formData
+        name: token
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      security:
+      - AuthBearer: []
+      summary: Get Claims
+      tags:
+      - auth
+  /register-login-mobile/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register Login
+      parameters:
+      - description: Mobile number
+        in: formData
+        name: mobile
+        required: true
+        type: string
+      - description: OTP
+        in: formData
+        name: otp
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: User Auth
+      tags:
+      - auth
+  /register/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Register
+      parameters:
+      - description: first name
+        in: formData
+        name: firstName
+        required: true
+        type: string
+      - description: last name
+        in: formData
+        name: lastName
+        required: true
+        type: string
+      - description: username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: email
+        in: formData
+        name: email
+        required: true
+        type: string
+      - description: password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: User Auth
+      tags:
+      - auth
+  /send-otp/:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: OTP request
+      parameters:
+      - description: mobile
+        in: formData
+        name: mobile
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Send OTP request
+      tags:
+      - auth
+  /v1/health/:
+    get:
+      consumes:
+      - application/json
+      description: Health Check
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "400":
+          description: Failed
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Health Check
+      tags:
+      - health
+securityDefinitions:
+  AuthBearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
