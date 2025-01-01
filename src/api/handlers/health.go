@@ -63,7 +63,19 @@ func (h Health) Health(c *gin.Context) {
 }
 
 func (h Health) HealthPost(c *gin.Context) {
-	c.JSON(http.StatusOK, "health POST")
+	message := c.DefaultPostForm("message", "")
+
+	if message != "" {
+		c.Header("HX-Trigger", "newMessage") // Optional: You can use this for triggering other actions with htmx
+		c.String(http.StatusOK, `
+			<div class="chat-message">
+				<div class="sender">You</div>
+				<div class="message-text">`+message+`</div>
+			</div>
+		`)
+	} else {
+		c.Status(http.StatusBadRequest)
+	}
 }
 
 func (h Health) HealthPostByID(c *gin.Context) {

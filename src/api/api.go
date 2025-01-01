@@ -69,9 +69,9 @@ func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
 }
 
 func RegisterRoute(r *gin.Engine) {
-	v1 := r.Group("/api/v1/")
+	v1 := r.Group("/")
 	{
-		healthGroup := v1.Group("health")
+		healthGroup := v1.Group("")
 		routers.Health(healthGroup)
 	}
 

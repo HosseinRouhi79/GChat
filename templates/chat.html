@@ -126,7 +126,7 @@
         </div>
 
         <!-- Chat Input -->
-        <form class="chat-form" hx-post="/send" hx-swap="beforeend" hx-target="#chat-box" hx-trigger="submit">
+        <form class="chat-form" hx-post="/send" hx-swap="beforebegin" hx-target="#chat-box" hx-trigger="submit">
             <input type="text" name="message" placeholder="Type your message..." required autocomplete="off">
             <button type="submit">Send</button>
         </form>

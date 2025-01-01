@@ -9,7 +9,7 @@ import (
 func Health(r *gin.RouterGroup) {
 	handler := handlers.NewHealth()
 	r.GET("/", handler.Health)
-	r.POST("/", handler.HealthPost)
+	r.POST("/send", handler.HealthPost)
 	r.GET("/:id", handler.HealthPostByID)
 }
 
