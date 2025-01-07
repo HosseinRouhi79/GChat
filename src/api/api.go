@@ -9,13 +9,21 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"github.com/gorilla/websocket"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+}
 
 func InitServer(cfg *config.Config) {
 	r := gin.New()
@@ -23,6 +31,88 @@ func InitServer(cfg *config.Config) {
 	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
 	// Load templates from the templates directory
 	r.LoadHTMLGlob("../../templates/*")
+	r.GET("/ws", func(c *gin.Context) {
+
+		conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+		if err != nil {
+			c.JSON(200, gin.H{
+				"message": err.Error(),
+			})
+		}
+		defer conn.Close()
+		for {
+
+			for j := 0; j < 5; j++ { // Example: send 5 responses
+				response := "Message #" + strconv.Itoa(j)
+				err = conn.WriteMessage(websocket.TextMessage, []byte(response))
+				if err != nil {
+					break
+				}
+				time.Sleep(time.Second) // Delay between messages
+			}
+			// 	conn.WriteMessage(websocket.TextMessage, []byte("Hello, WebSocket!"))
+			// 	_, msg, err := conn.ReadMessage()
+			// 	if err != nil {
+			// 		if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
+			// 			break // Client closed the connection
+			// 		}
+			// 		conn.WriteMessage(websocket.TextMessage, []byte("Error reading message: "+err.Error()))
+			// 		break
+			// 	}
+
+			// 	// Parse the received message into an integer (assumes the client sends `i` as a stringified number)
+			// 	i, err := strconv.Atoi(string(msg))
+			// 	if err != nil {
+			// 		conn.WriteMessage(websocket.TextMessage, []byte("Invalid number received: "+string(i)))
+			// 		continue
+			// 	}
+
+			// 	time.Sleep(time.Second)
+		}
+	})
+
+	// r.POST("/ws", func(c *gin.Context) {
+	// 	// Upgrade the HTTP connection to a WebSocket
+	// 	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+	// 	if err != nil {
+	// 		c.JSON(http.StatusInternalServerError, gin.H{
+	// 			"error": "Failed to upgrade to WebSocket: " + err.Error(),
+	// 		})
+	// 		return
+	// 	}
+	// 	defer conn.Close()
+
+	// 	// Start the WebSocket loop
+	// 	for {
+	// 		// Read message from WebSocket
+	// _, msg, err := conn.ReadMessage()
+	// if err != nil {
+	// 	if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
+	// 		break // Client closed the connection
+	// 	}
+	// 	conn.WriteMessage(websocket.TextMessage, []byte("Error reading message: "+err.Error()))
+	// 	break
+	// }
+
+	// // Parse the received message into an integer (assumes the client sends `i` as a stringified number)
+	// i, err := strconv.Atoi(string(msg))
+	// if err != nil {
+	// 	conn.WriteMessage(websocket.TextMessage, []byte("Invalid number received: "+string(msg)))
+	// 	continue
+	// }
+
+	// 		// Respond with messages
+	// for j := 0; j < 5; j++ { // Example: send 5 responses
+	// 	response := "Message #" + strconv.Itoa(i+j)
+	// 	err = conn.WriteMessage(websocket.TextMessage, []byte(response))
+	// 	if err != nil {
+	// 		break
+	// 	}
+	// 	time.Sleep(time.Second) // Delay between messages
+	// }
+	// 	}
+	// })
+
 	r.GET("/testo", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{
 			"title":   "HTMX with Gin",
@@ -40,7 +130,6 @@ func InitServer(cfg *config.Config) {
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
 		panic(err)
 	}
-
 }
 
 func RegisterMainValidation() {

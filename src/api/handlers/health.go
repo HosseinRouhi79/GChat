@@ -10,7 +10,13 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 )
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+}
 
 type Health struct{}
 type Test struct {
@@ -65,17 +71,29 @@ func (h Health) Health(c *gin.Context) {
 func (h Health) HealthPost(c *gin.Context) {
 	message := c.DefaultPostForm("message", "")
 
-	if message != "" {
-		c.Header("HX-Trigger", "newMessage") // Optional: You can use this for triggering other actions with htmx
-		c.String(http.StatusOK, `
-			<div class="chat-message">
-				<div class="sender">You</div>
-				<div class="message-text">`+message+`</div>
-			</div>
-		`)
-	} else {
-		c.Status(http.StatusBadRequest)
+	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		c.JSON(200, gin.H{
+			"message": err.Error(),
+		})
 	}
+	defer conn.Close()
+	for {
+		if message != "" {
+			c.Header("HX-Trigger", "newMessage") // Optional: You can use this for triggering other actions with htmx
+			c.String(http.StatusOK, `
+				<div class="chat-message">
+					<div class="sender">You</div>
+					<div class="message-text">`+message+`</div>
+				</div>
+			`)
+		} else {
+			c.Status(http.StatusBadRequest)
+		}
+		conn.WriteMessage(websocket.TextMessage, []byte("Hello, WebSocket!"))
+		time.Sleep(time.Second)
+	}
+	
 }
 
 func (h Health) HealthPostByID(c *gin.Context) {

@@ -43,6 +43,7 @@ func main() {
 	}
 	// migrations.Up_1()
 	api.InitServer(cfg)
+
 	defer cache.CloseRedis()
 	defer db.CloseDB()
 }

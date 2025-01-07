@@ -1,0 +1,10 @@
+{"level":"info","ts":"2025-01-01T16:50:20.511+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-01T16:50:20.522+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Postgres"}
+{"level":"info","ts":"2025-01-01T16:50:33.429+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000117958,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:50:39.120+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000071585,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:51:08.651+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000165952,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:51:37.182+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000055298,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:53:55.629+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000056925,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:54:20.725+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000060492,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:55:44.324+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000102532,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-01T16:58:47.952+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/connection/websocket","Latency":0.000173505,"Category":"RequestResponse","SubCategory":"Api"}
