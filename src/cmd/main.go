@@ -47,3 +47,4 @@ func main() {
 	defer cache.CloseRedis()
 	defer db.CloseDB()
 }
+

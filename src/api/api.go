@@ -9,8 +9,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -24,94 +22,60 @@ var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 }
+var clients = make(map[*websocket.Conn]bool)
+var broadcast = make(chan string)
 
+func handleWebSocket(c *gin.Context) {
+	ws, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		log.Println("Failed to upgrade:", err)
+		return
+	}
+	defer ws.Close()
+
+	clients[ws] = true
+
+	for {
+		var message string
+
+		err := ws.ReadJSON(&message)
+		if err != nil {
+			log.Println("Error reading message:", err)
+			delete(clients, ws)
+			break
+		}
+
+		message = "You: "+message 
+		broadcast <- message
+	}
+}
+
+func handleMessages() {
+	for {
+		
+		message := <-broadcast
+
+		for client := range clients {
+			err := client.WriteJSON(message)
+			if err != nil {
+				log.Println("Error writing message:", err)
+				client.Close()
+				delete(clients, client)
+			}
+		}
+	}
+}
 func InitServer(cfg *config.Config) {
 	r := gin.New()
 	RegisterMainValidation()
 	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
 	// Load templates from the templates directory
 	r.LoadHTMLGlob("../../templates/*")
-	r.GET("/ws", func(c *gin.Context) {
+	r.GET("/ws", handleWebSocket)
 
-		conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
-		if err != nil {
-			c.JSON(200, gin.H{
-				"message": err.Error(),
-			})
-		}
-		defer conn.Close()
-		for {
+	
+	go handleMessages()
 
-			for j := 0; j < 5; j++ { // Example: send 5 responses
-				response := "Message #" + strconv.Itoa(j)
-				err = conn.WriteMessage(websocket.TextMessage, []byte(response))
-				if err != nil {
-					break
-				}
-				time.Sleep(time.Second) // Delay between messages
-			}
-			// 	conn.WriteMessage(websocket.TextMessage, []byte("Hello, WebSocket!"))
-			// 	_, msg, err := conn.ReadMessage()
-			// 	if err != nil {
-			// 		if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
-			// 			break // Client closed the connection
-			// 		}
-			// 		conn.WriteMessage(websocket.TextMessage, []byte("Error reading message: "+err.Error()))
-			// 		break
-			// 	}
-
-			// 	// Parse the received message into an integer (assumes the client sends `i` as a stringified number)
-			// 	i, err := strconv.Atoi(string(msg))
-			// 	if err != nil {
-			// 		conn.WriteMessage(websocket.TextMessage, []byte("Invalid number received: "+string(i)))
-			// 		continue
-			// 	}
-
-			// 	time.Sleep(time.Second)
-		}
-	})
-
-	// r.POST("/ws", func(c *gin.Context) {
-	// 	// Upgrade the HTTP connection to a WebSocket
-	// 	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
-	// 	if err != nil {
-	// 		c.JSON(http.StatusInternalServerError, gin.H{
-	// 			"error": "Failed to upgrade to WebSocket: " + err.Error(),
-	// 		})
-	// 		return
-	// 	}
-	// 	defer conn.Close()
-
-	// 	// Start the WebSocket loop
-	// 	for {
-	// 		// Read message from WebSocket
-	// _, msg, err := conn.ReadMessage()
-	// if err != nil {
-	// 	if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
-	// 		break // Client closed the connection
-	// 	}
-	// 	conn.WriteMessage(websocket.TextMessage, []byte("Error reading message: "+err.Error()))
-	// 	break
-	// }
-
-	// // Parse the received message into an integer (assumes the client sends `i` as a stringified number)
-	// i, err := strconv.Atoi(string(msg))
-	// if err != nil {
-	// 	conn.WriteMessage(websocket.TextMessage, []byte("Invalid number received: "+string(msg)))
-	// 	continue
-	// }
-
-	// 		// Respond with messages
-	// for j := 0; j < 5; j++ { // Example: send 5 responses
-	// 	response := "Message #" + strconv.Itoa(i+j)
-	// 	err = conn.WriteMessage(websocket.TextMessage, []byte(response))
-	// 	if err != nil {
-	// 		break
-	// 	}
-	// 	time.Sleep(time.Second) // Delay between messages
-	// }
-	// 	}
-	// })
 
 	r.GET("/testo", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{

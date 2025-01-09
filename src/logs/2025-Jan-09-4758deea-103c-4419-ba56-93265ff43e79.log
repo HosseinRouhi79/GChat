@@ -1,0 +1,6 @@
+{"level":"info","ts":"2025-01-09T11:28:24.454+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-09T11:28:24.495+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Postgres"}
+{"level":"info","ts":"2025-01-09T11:28:31.255+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/chat","Latency":0.000381424}
+{"level":"info","ts":"2025-01-09T11:28:32.531+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000021389,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T11:28:36.559+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/chat","Latency":0.000261214,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-01-09T11:28:37.039+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico","Latency":0.000016759}
