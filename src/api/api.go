@@ -51,11 +51,13 @@ func handleWebSocket(c *gin.Context) {
 	clients[ws] = true
 
 	db := db.GetDB()
+
 	messages2 := getPreviousMessages(db, broadcast)
 	for _, message := range messages2 {
 		msg := message.User.Username + " : " + message.Value
 		broadcast <- msg
 	}
+
 	for {
 		var message string
 
