@@ -2,6 +2,8 @@ package api
 
 import (
 	"chat/config"
+	"chat/data/db"
+	"chat/data/models"
 	"chat/docs"
 	"chat/src/api/middlewares/middlewares"
 	"chat/src/api/routers"
@@ -9,6 +11,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -16,6 +19,7 @@ import (
 	"github.com/gorilla/websocket"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"gorm.io/gorm"
 )
 
 var upgrader = websocket.Upgrader{
@@ -25,7 +29,18 @@ var upgrader = websocket.Upgrader{
 var clients = make(map[*websocket.Conn]bool)
 var broadcast = make(chan string)
 
+func getPreviousMessages(db *gorm.DB, ch chan string) []models.Message {
+	var messages []models.Message
+	err := db.Preload("User").Find(&messages).Error
+	if err != nil {
+		log.Println("Failed to get previous message:", err)
+		return nil
+	}
+	return messages
+}
+
 func handleWebSocket(c *gin.Context) {
+
 	ws, err := upgrader.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		log.Println("Failed to upgrade:", err)
@@ -35,6 +50,12 @@ func handleWebSocket(c *gin.Context) {
 
 	clients[ws] = true
 
+	db := db.GetDB()
+	messages2 := getPreviousMessages(db, broadcast)
+	for _, message := range messages2 {
+		msg := message.User.Username + " : " + message.Value
+		broadcast <- msg
+	}
 	for {
 		var message string
 
@@ -45,7 +66,18 @@ func handleWebSocket(c *gin.Context) {
 			break
 		}
 
-		message = message
+		u := models.User{}
+		messageArr := strings.Split(message, " : ")
+		err = db.Table("users").Where("username = ?", messageArr[0]).First(&u).Error
+		if err != nil {
+			log.Println("User not found", messageArr[0])
+			break
+		}
+		msg := models.Message{
+			Value: messageArr[1],
+			User:  u,
+		}
+		db.Create(&msg)
 		broadcast <- message
 	}
 }

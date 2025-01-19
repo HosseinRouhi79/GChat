@@ -4,7 +4,6 @@ import (
 	"chat/config"
 	"chat/data/cache"
 	"chat/data/db"
-	"chat/data/db/migrations"
 	"chat/src/api"
 	"log"
 	"net/http"
@@ -42,7 +41,7 @@ func main() {
 	if err != nil {
 		panic("cannot connect to database(main error)")
 	}
-	migrations.Up_1()
+	// migrations.Up_1()
 	api.InitServer(cfg)
 
 	defer cache.CloseRedis()

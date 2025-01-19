@@ -93,11 +93,26 @@
                     const message = document.createElement("div");
                     const greetingDiv = document.getElementById('greeting');
                     const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
+
+                    // Create the delete button
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.className = "btn btn-danger btn-sm ml-2"; // Add Bootstrap classes for styling
+                    deleteButton.style.float = "right"; // Align the button to the right
+                    deleteButton.onclick = function() {
+                        messagesDiv.removeChild(message); // Remove the message div
+                    };
+
                     message.textContent = event.data;
                     message.className = "alert alert-info mb-2 p-2";
+                    
+                    // Append the delete button to the message div
+                    message.appendChild(deleteButton);
+                    
                     messagesDiv.appendChild(message);
                     messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
                 };
+
 
                 // Send message on form submission
                 window.sendMessage = function(event) {

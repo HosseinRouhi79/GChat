@@ -20,6 +20,7 @@ func Up_1() {
 	var cities = models.City{}
 	var users = models.User{}
 	var roles = models.Role{}
+	var messages = models.Message{}
 	var userRoles = models.UserRole{}
 
 	tables = addNewTable(db, countries, tables)
@@ -27,6 +28,7 @@ func Up_1() {
 	tables = addNewTable(db, users, tables)
 	tables = addNewTable(db, roles, tables)
 	tables = addNewTable(db, userRoles, tables)
+	tables = addNewTable(db, messages, tables)
 
 	err := db.Migrator().CreateTable(tables...)
 	if err != nil {

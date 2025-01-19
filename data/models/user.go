@@ -17,6 +17,12 @@ type Role struct {
 	Name      string `gorm:"type:string;size:10;not null,unique"`
 	UserRoles *[]UserRole
 }
+type Message struct {
+	BaseModel
+	Value      string `gorm:"type:string"`
+	UserID int 
+	User User `json:"-" gorm:"foreignKey:UserID;"`
+}
 
 type UserRole struct {
 	BaseModel

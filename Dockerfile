@@ -7,7 +7,7 @@ COPY go.mod go.sum ./
 
 RUN go mod tidy
 
-COPY ../. .
+COPY . .
 
 RUN go build -o gchat
 
