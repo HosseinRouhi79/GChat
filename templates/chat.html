@@ -93,7 +93,7 @@
                     const message = document.createElement("div");
                     const greetingDiv = document.getElementById('greeting');
                     const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
-                    message.textContent = username+ ":" + event.data;
+                    message.textContent = event.data;
                     message.className = "alert alert-info mb-2 p-2";
                     messagesDiv.appendChild(message);
                     messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
@@ -104,7 +104,9 @@
                     event.preventDefault();
                     const input = document.querySelector("[name=message]");
                     const message = input.value;
-                    ws.send(JSON.stringify(message));
+                    const greetingDiv = document.getElementById('greeting');
+                    const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
+                    ws.send(JSON.stringify(username + " : " + message));
                     input.value = ""; // Clear the input
                 };
             }

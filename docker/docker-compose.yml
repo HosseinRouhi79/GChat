@@ -1,0 +1,37 @@
+services:
+  
+  
+  ####################### POSTGRES #######################
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: chat
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - webapi_network
+    restart: unless-stopped
+
+  app:
+    image: gchat
+    build: .
+    command: ./gchat
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+ 
+####################### VOLUME AND NETWORKS #######################
+volumes:
+  postgres:
+ 
+
+networks:
+  webapi_network:
+    driver: bridge
