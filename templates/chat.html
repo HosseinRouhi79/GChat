@@ -16,10 +16,14 @@
 </head>
 <body class="bg-dark">
     <div class="container py-5">
+        <!-- Greeting box -->
+        <div id="greeting" class="alert alert-primary text-center d-none"></div>
+
         <h1 class="text-center mb-4 text-light">WebSocket Chat</h1>
 
         <div id="messages" class="border border-secondary rounded p-3 bg-secondary mb-3"></div>
 
+        <!-- Chat form -->
         <form id="chat-form" 
               class="d-flex gap-2"
               hx-post="/send" 
@@ -30,32 +34,81 @@
                    name="message" 
                    class="form-control" 
                    placeholder="Type your message..." 
-                   required>
-            <button type="submit" class="btn btn-primary">Send</button>
+                   required 
+                   disabled> <!-- Initially disabled -->
+            <button type="submit" class="btn btn-primary" disabled>Send</button> <!-- Initially disabled -->
         </form>
     </div>
 
     <script>
-        const ws = new WebSocket("ws://192.168.59.133:8000/ws");
+        window.addEventListener('load', () => {
+            const jwtToken = JSON.parse(localStorage.getItem('jwtToken'));
+            const messageInput = document.querySelector("[name=message]");
+            const sendButton = document.querySelector("button[type=submit]");
+            let checker = false;
 
-        // Listen for messages
-        ws.onmessage = function(event) {
-            const messagesDiv = document.getElementById("messages");
-            const message = document.createElement("div");
-            message.textContent = event.data;
-            message.className = "alert alert-info mb-2 p-2";
-            messagesDiv.appendChild(message);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
-        };
+            if (jwtToken) {
+                checker = true;
 
-        // Send message on form submission
-        function sendMessage(event) {
-            event.preventDefault();
-            const input = document.querySelector("[name=message]");
-            const message = input.value;
-            ws.send(JSON.stringify(message));
-            input.value = ""; // Clear the input
-        }
+                // Fetch user claims
+                fetch('/api/claim', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${jwtToken.accessToken}`,
+                        'Accept': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Full Response Data:', data);
+
+                    // Display the username in the greeting box
+                    if (data.claims && data.claims.userName) {
+                        const greetingDiv = document.getElementById('greeting');
+                        greetingDiv.textContent = `Hi ${data.claims.userName}!`;
+                        greetingDiv.classList.remove('d-none'); // Show the greeting box
+
+                        // Enable the input and button
+                        messageInput.disabled = false;
+                        sendButton.disabled = false;
+                    } else {
+                        console.warn('Username not found in the claims object');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                console.log("JWT Token is missing or invalid.");
+            }
+
+            // Initialize WebSocket only if checker is true
+            if (checker) {
+                
+                const ws = new WebSocket("ws://192.168.59.133:8000/ws");
+
+                // Listen for messages
+                ws.onmessage = function(event) {
+                    const messagesDiv = document.getElementById("messages");
+                    const message = document.createElement("div");
+                    const greetingDiv = document.getElementById('greeting');
+                    const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
+                    message.textContent = username+ ":" + event.data;
+                    message.className = "alert alert-info mb-2 p-2";
+                    messagesDiv.appendChild(message);
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
+                };
+
+                // Send message on form submission
+                window.sendMessage = function(event) {
+                    event.preventDefault();
+                    const input = document.querySelector("[name=message]");
+                    const message = input.value;
+                    ws.send(JSON.stringify(message));
+                    input.value = ""; // Clear the input
+                };
+            }
+        });
     </script>
 </body>
 </html>

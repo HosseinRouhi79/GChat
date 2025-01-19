@@ -6,11 +6,59 @@
     <title>Login Page</title>
     <script src="https://unpkg.com/htmx.org"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script>
+        let jwtToken = null;
+    
+        // Function to handle login and navigate to /chat
+        function handleLogin(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(event.target);
+    
+            fetch('/up-login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status && data.token) {
+                    jwtToken = data.token; // Save the token
+                    console.log(jwtToken);
+                    alert('Login successful!');
+    
+                    // Store token in localStorage
+                    localStorage.setItem('jwtToken', JSON.stringify(jwtToken));
+    
+                    // Send a request to /chat with the Authorization header
+                    fetch('/chat', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${jwtToken.accessToken}`
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Only redirect to /chat after the request is successful
+                            alert(response);
+                            window.location.href = '/chat';
+                        } else {
+                            alert('Failed to load the chat page. Please try again.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    alert('Login failed!');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+    
 </head>
 <body class="bg-gray-100 h-screen flex items-center justify-center">
     <div class="bg-white p-6 rounded shadow-md w-full max-w-sm">
         <h1 class="text-xl font-bold mb-4">Login</h1>
-        <form id="loginForm" hx-post="/login" hx-target="#response" hx-swap="innerHTML">
+        <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="mb-4">
                 <label for="username" class="block text-gray-700">Username</label>
                 <input 

@@ -189,3 +189,35 @@ func (userService *UserService) RegisterLoginByMobile(dto dto.RegisterLoginByMob
 		return tokenDetail, nil
 	}
 }
+
+func (userService *UserService) UserPassLogin(dto dto.LoginByUsernameDto) (tokenDetail *TokenDetail, err error) {
+	_, exists := userService.ExistByUsername(dto.Username)
+
+	user := models.User{}
+
+	if !exists {
+		return nil, errors.New("user not found")
+	}
+	err = userService.Db.Table("users").
+		Where("username = ?", dto.Username).
+		Preload("UserRoles", func(tx *gorm.DB) *gorm.DB {
+			return tx.Preload("Role")
+		}).
+		First(&user).Error
+
+	if err != nil {
+		return nil, err
+	}
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(dto.Password))
+	if err != nil {
+		errNew := errors.New("user not found")
+		return nil, errNew
+	}
+	tdto := TokenDto{UserName: user.Username}
+	tokenDetail2, err := userService.Token.GenerateToken(&tdto)
+	if err != nil {
+		userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)
+		return nil, err
+	}
+	return tokenDetail2, nil
+}

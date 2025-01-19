@@ -1,0 +1,22 @@
+{"level":"info","ts":"2025-01-19T09:45:35.698+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-19T09:45:35.989+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-19T09:45:52.551+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/index.html","Latency":0.000271684}
+{"level":"info","ts":"2025-01-19T09:45:52.584+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.007171766,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:45:52.603+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.009329945,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:45:52.608+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.014003631,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:45:52.905+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000734288,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/doc.json"}
+{"level":"info","ts":"2025-01-19T09:46:08.322+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login/","Latency":0.000000338,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:46:13.401+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login/","Latency":0.000000355,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:47:08.437+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-01-19T09:47:11.509+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-01-19T09:47:11.509+0330","msg":"can not set otp code: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-01-19T09:47:11.509+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/send-otp","Latency":6.127806911}
+{"level":"info","ts":"2025-01-19T09:47:27.803+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/login","Latency":0.000560649,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-01-19T09:47:37.549+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000020183,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:47:40.249+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.598689398,"Category":"RequestResponse","SubCategory":"Api","Path":"/up-login"}
+{"level":"info","ts":"2025-01-19T09:47:42.932+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000503184,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:47:44.332+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000334897,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:47:48.316+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000000457,"Category":"RequestResponse","SubCategory":"Api","Path":"/claim"}
+{"level":"info","ts":"2025-01-19T09:47:48.429+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.001086472,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-19T09:47:48.609+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico","Latency":0.000011247}
+{"level":"info","ts":"2025-01-19T09:48:19.389+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000079926,"Category":"RequestResponse"}

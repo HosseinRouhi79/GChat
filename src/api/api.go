@@ -45,14 +45,14 @@ func handleWebSocket(c *gin.Context) {
 			break
 		}
 
-		message = "You: "+message 
+		message = message
 		broadcast <- message
 	}
 }
 
 func handleMessages() {
 	for {
-		
+
 		message := <-broadcast
 
 		for client := range clients {
@@ -68,16 +68,14 @@ func handleMessages() {
 func InitServer(cfg *config.Config) {
 	r := gin.New()
 	RegisterMainValidation()
-	r.Use(gin.Logger(), gin.Recovery(), middlewares.Limitter(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
+	r.Use(gin.Logger(), gin.Recovery(), middlewares.StructuredMiddleware()) // => r1 := gin.Default()
 	// Load templates from the templates directory
 	r.LoadHTMLGlob("../../templates/*")
 	r.GET("/ws", handleWebSocket)
 
-	
 	go handleMessages()
 
-
-	r.GET("/testo", func(c *gin.Context) {
+	r.GET("/login", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{
 			"title":   "HTMX with Gin",
 			"heading": "Welcome to the Gin HTMX Example!",
@@ -158,5 +156,11 @@ func RegisterRoute(r *gin.Engine) {
 		formGroup := v6.Group("")
 		routers.GetJWT(formGroup)
 		routers.Auth(formGroup)
+	}
+	v7 := r.Group("/")
+	{
+		formGroup := v7.Group("")
+		routers.GetJWT(formGroup)
+		routers.Auth2(formGroup)
 	}
 }

@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-01-15T17:02:35.489+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2025-01-15T17:02:35.589+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-15T17:02:38.361+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.812447918,"Category":"RequestResponse","SubCategory":"Api","Path":"/up-login"}
+{"level":"info","ts":"2025-01-15T17:02:39.705+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.00003206,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-15T17:02:42.609+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/login","Latency":0.000287837,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-15T17:02:45.557+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/login","Latency":0.003654669}
+{"level":"info","ts":"2025-01-15T17:02:55.641+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000015419,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-15T17:03:06.213+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/up-login","Latency":0.543592183,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-15T17:03:07.325+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000064298,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-15T17:03:35.189+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/up-login","Latency":0.935702885,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-01-15T17:03:36.405+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000021759,"Category":"RequestResponse","SubCategory":"Api"}

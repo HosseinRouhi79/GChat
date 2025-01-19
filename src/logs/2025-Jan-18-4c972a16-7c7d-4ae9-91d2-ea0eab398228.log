@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-01-18T18:20:40.429+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2025-01-18T18:20:40.439+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-18T18:20:49.727+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/login","Latency":0.000298213,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-18T18:20:51.189+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000055507,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-18T18:20:53.884+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/login","Latency":0.001188588}
+{"level":"info","ts":"2025-01-18T18:20:54.529+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000016816,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-18T18:20:58.736+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.100230725,"Category":"RequestResponse","SubCategory":"Api","Path":"/up-login"}
+{"level":"info","ts":"2025-01-18T18:20:59.830+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000558947,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-18T18:21:00.508+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/chat","Latency":0.000384965,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-01-18T18:21:00.632+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000309596,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-18T18:21:00.636+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000010889,"Category":"RequestResponse","SubCategory":"Api"}

@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-01-09T13:28:53.694+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2025-01-09T13:28:53.782+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-09T13:28:56.226+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:28:56.390+0330","msg":"Record(username) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:28:56.538+0330","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2025-01-09T13:28:56.538+0330","msg":"Role not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"DefaultRoleNotFound"}
+{"level":"info","ts":"2025-01-09T13:28:56.542+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.496218101,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:30:36.078+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:30:36.270+0330","msg":"Record(username) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:30:37.990+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":2.098561384,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-09T13:30:40.574+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.148121096,"Category":"RequestResponse","SubCategory":"Api"}
