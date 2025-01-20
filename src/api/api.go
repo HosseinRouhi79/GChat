@@ -27,9 +27,9 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 var clients = make(map[*websocket.Conn]bool)
-var broadcast = make(chan string)
+var broadcast = make(chan map[string]interface{})
 
-func getPreviousMessages(db *gorm.DB, ch chan string) []models.Message {
+func getPreviousMessages(db *gorm.DB, ch chan map[string]interface{}) []models.Message {
 	var messages []models.Message
 	err := db.Preload("User").Find(&messages).Error
 	if err != nil {
@@ -37,6 +37,25 @@ func getPreviousMessages(db *gorm.DB, ch chan string) []models.Message {
 		return nil
 	}
 	return messages
+}
+
+func deleteMessage(c *gin.Context) {
+	db := db.GetDB()
+	id := c.Param("id")
+
+	// Find the user by ID
+	var message models.Message
+	if err := db.First(&message, id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Message not found"})
+		return
+	}
+
+	// Delete the user
+	if err := db.Delete(&message).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete message"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Message deleted successfully"})
 }
 
 func handleWebSocket(c *gin.Context) {
@@ -54,12 +73,16 @@ func handleWebSocket(c *gin.Context) {
 
 	messages2 := getPreviousMessages(db, broadcast)
 	for _, message := range messages2 {
-		msg := message.User.Username + " : " + message.Value
-		err := ws.WriteJSON(msg)
-			if err != nil {
-				log.Println("Error writing message:", err)
-				ws.Close()
-			}
+		prevMap := map[string]interface{}{
+			"username": message.User.Username,
+			"value":    message.Value,
+			"id":       message.Id,
+		}
+		err := ws.WriteJSON(prevMap)
+		if err != nil {
+			log.Println("Error writing message:", err)
+			ws.Close()
+		}
 	}
 
 	for {
@@ -84,7 +107,12 @@ func handleWebSocket(c *gin.Context) {
 			User:  u,
 		}
 		db.Create(&msg)
-		broadcast <- message
+		msgMap := map[string]interface{}{
+			"username": msg.User.Username,
+			"value":    msg.Value,
+			"id":       msg.Id,
+		}
+		broadcast <- msgMap
 	}
 }
 
@@ -125,6 +153,7 @@ func InitServer(cfg *config.Config) {
 			"heading": "Welcome to the Gin HTMX Example!",
 		})
 	})
+	r.DELETE("/api/:id/delete", deleteMessage)
 	RegisterRoute(r)
 	RegisterSwagger(r, cfg)
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {

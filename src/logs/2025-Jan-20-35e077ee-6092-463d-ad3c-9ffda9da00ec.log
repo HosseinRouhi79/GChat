@@ -1,0 +1,25 @@
+{"level":"info","ts":"2025-01-20T17:28:57.695+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-20T17:28:57.705+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-20T17:29:04.784+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000636822,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:05.076+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000194024,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:05.086+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000024296,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:07.188+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/28/delete","Latency":0.016720797}
+{"level":"info","ts":"2025-01-20T17:29:13.352+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/29/delete","Latency":0.027789909,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:14.392+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/27/delete","Latency":0.025475185,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:14.942+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/26/delete","Latency":0.017932622,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:15.418+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/25/delete","Latency":0.021669677}
+{"level":"info","ts":"2025-01-20T17:29:16.692+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.017512653,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/24/delete"}
+{"level":"info","ts":"2025-01-20T17:29:17.156+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/23/delete","Latency":0.023860525,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:17.569+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/22/delete","Latency":0.020265813}
+{"level":"info","ts":"2025-01-20T17:29:18.663+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/21/delete","Latency":0.019875198,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:19.360+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/20/delete","Latency":0.019984367,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:19.963+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/19/delete","Latency":0.023333469,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:21.302+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000876191,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:21.314+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws","Latency":16.24055207,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:21.630+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000086158,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-01-20T17:29:21.632+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000014766,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:22.278+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.000529156,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:22.282+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws","Latency":0.679964599,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:22.570+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000113904,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:22.578+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000016781,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-20T17:29:31.501+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.024673449,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/31/delete"}
