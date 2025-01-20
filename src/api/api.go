@@ -55,7 +55,11 @@ func handleWebSocket(c *gin.Context) {
 	messages2 := getPreviousMessages(db, broadcast)
 	for _, message := range messages2 {
 		msg := message.User.Username + " : " + message.Value
-		broadcast <- msg
+		err := ws.WriteJSON(msg)
+			if err != nil {
+				log.Println("Error writing message:", err)
+				ws.Close()
+			}
 	}
 
 	for {
