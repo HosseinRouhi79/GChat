@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gin WebSocket Chat</title>
-    <script src="https://unpkg.com/htmx.org"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        body {
-            background-color: #000; /* Black background */
-            color: #0f0; /* Green text */
-            font-family: monospace;
-        }
-        #messages {
-            height: 300px;
-            overflow-y: scroll;
-            background-color: #000; /* Match the background */
-            color: #0f0; /* Match the green text */
-            border: 1px solid #0f0; /* Green border */
-            padding: 10px;
-        }
-        .alert {
-            background-color: #c9e1e6; /* Match the terminal background */
-            color: rgb(2, 10, 0); /* Green text for messages */
-            border: 1px solid rgb(1, 11, 1); /* Green border */
-        }
-        .btn-primary {
-            background-color: #0f0; /* Green button */
-            color: #000; /* Black text */
-            border-color: #0f0; /* Match green theme */
-        }
-        .btn-primary:hover {
-            background-color: #0a0; /* Darker green on hover */
-            color: #fff;
-        }
-        input {
-            background-color: #000; /* Match terminal background */
-            color: #0f0; /* Green text */
-            border: 1px solid #0f0; /* Green border */
-        }
-        input::placeholder {
-            color: #0a0; /* Dark green placeholder text */
-        }
-
-        /* Neon Light Effect */
-        .neon-text {
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            color: #0f0; /* Bright green */
-            text-shadow: 
-                0 0 5px #0f0,
-                0 0 10px #0f0,
-                0 0 20px #0f0,
-                0 0 40px #0f0,
-                0 0 80px #0f0,
-                0 0 90px #0f0;
-                animation: flicker 3s infinite;
-        }
-
-         /* Flicker animation */
-         @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                opacity: 1; /* Fully lit */
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gin WebSocket Chat</title>
+        <script src="https://unpkg.com/htmx.org"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            body {
+                background-color: #001f3f; /* Dark blue background */
+                color: #ffffff; /* White text */
+                font-family: Calibri, sans-serif;
+            }
+            #messages {
+                height: 300px;
+                overflow-y: scroll;
+                background-color: #002b5c; /* Darker blue */
+                color: #ffffff; /* White text */
+                border: 1px solid #ffffff; /* White border */
+                padding: 10px;
+            }
+            .alert {
+                background-color: #003d80; /* Lighter dark blue */
+                color: #ffffff; /* White text */
+                border: 1px solid #ffffff; /* White border */
+            }
+            .btn-primary {
+                background-color: #00509e; /* Bright blue */
+                color: #ffffff; /* White text */
+                border-color: #00509e; /* Match blue theme */
+            }
+            .btn-primary:hover {
+                background-color: #003d80; /* Darker blue on hover */
+                color: #ffffff;
+            }
+            input {
+                background-color: #002b5c; /* Match darker blue background */
+                color: #ffffff; /* White text */
+                border: 1px solid #ffffff; /* White border */
+            }
+            input::placeholder {
+                color: #80bfff; /* Light blue placeholder text */
+            }
+    
+            /* Neon Light Effect for Title */
+            .neon-text {
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                color: #ffffff; /* White text */
                 text-shadow: 
-                    0 0 5px #0f0,
-                    0 0 10px #0f0,
-                    0 0 20px #0f0,
-                    0 0 40px #0f0,
-                    0 0 80px #0f0;
+                    0 0 5px #ffffff,
+                    0 0 10px #ffffff,
+                    0 0 20px #80bfff,
+                    0 0 40px #80bfff,
+                    0 0 80px #80bfff,
+                    0 0 90px #80bfff;
+                    animation: flicker 3s infinite;
             }
-            19%, 21%, 24%, 54%, 56% {
-                opacity: 0.5; /* Dim light */
-                text-shadow: 
-                    0 0 2px #0a0,
-                    0 0 4px #0a0,
-                    0 0 8px #0a0;
+    
+             /* Flicker animation */
+             @keyframes flicker {
+                0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                    opacity: 1; /* Fully lit */
+                    text-shadow: 
+                        0 0 5px #ffffff,
+                        0 0 10px #ffffff,
+                        0 0 20px #80bfff,
+                        0 0 40px #80bfff,
+                        0 0 80px #80bfff;
+                }
+                19%, 21%, 24%, 54%, 56% {
+                    opacity: 0.5; /* Dim light */
+                    text-shadow: 
+                        0 0 2px #80bfff,
+                        0 0 4px #80bfff,
+                        0 0 8px #80bfff;
+                }
+                20%, 55% {
+                    opacity: 0; /* Light off */
+                    text-shadow: none;
+                }
             }
-            20%, 55% {
-                opacity: 0; /* Light off */
-                text-shadow: none;
-            }
-        }
-    </style>
-</head>
+        </style>
+    </head>
 <body>
     <div class="container py-5">
         <!-- Greeting box -->
@@ -197,7 +197,7 @@
                 const ws = new WebSocket("ws://192.168.59.133:8000/ws");
 
                 // Listen for messages
-                ws.onmessage = function(event) {
+                ws.onmessage = function (event) {
                     const messagesDiv = document.getElementById("messages");
                     const message = document.createElement("div");
                     const greetingDiv = document.getElementById('greeting');
@@ -210,24 +210,49 @@
                     const username2 = jsonData.username;
                     const value = jsonData.value;
 
-                    // Create the delete button
-                    const deleteButton = document.createElement("button");
-                    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>'; // Font Awesome trash icon
-                    deleteButton.className = "btn btn-danger btn-sm ml-2"; // Add Bootstrap classes for styling
-                    deleteButton.style.float = "right"; // Align the button to the right
-                    deleteButton.onclick = async function () {
+                    // Create the Options button
+                    const optionsButton = document.createElement("button");
+                    optionsButton.innerHTML = '<i class="fas fa-ellipsis-vertical"></i>'; // Font Awesome vertical ellipsis icon
+                    optionsButton.className = "btn btn-light btn-sm";
+                    optionsButton.style.position = "absolute";
+                    optionsButton.style.top = "10px"; // Adjust as needed
+                    optionsButton.style.right = "10px"; // Adjust as needed
+                    optionsButton.style.background = "transparent"; // Transparent background
+                    optionsButton.style.border = "none"; // No border
+                    optionsButton.style.color = "#fff"; // Icon color
+                    optionsButton.style.cursor = "pointer";
+
+                    // Create the dropdown container for options
+                    const optionsDropdown = document.createElement("div");
+                    optionsDropdown.className = "dropdown-menu";
+                    optionsDropdown.style.position = "absolute";
+                    optionsDropdown.style.top = "30px"; // Dropdown position below the button
+                    optionsDropdown.style.right = "10px"; // Align with the button
+                    optionsDropdown.style.display = "none"; // Initially hidden
+                    optionsDropdown.style.backgroundColor = "#80bfff";
+                    optionsDropdown.style.color = "#fff"; // White text
+                    optionsDropdown.style.border = "1px solid #444"; // Border color
+                    optionsDropdown.style.borderRadius = "4px"; // Rounded corners
+                    optionsDropdown.style.zIndex = "1000";
+
+                    // Add Delete option to the dropdown
+                    const deleteOption = document.createElement("a");
+                    deleteOption.className = "dropdown-item";
+                    deleteOption.href = "#";
+                    deleteOption.textContent = "Delete";
+                    deleteOption.style.color = "red"; // Text color
+                    deleteOption.style.padding = "8px 12px"; // Padding
+                    deleteOption.style.cursor = "pointer";
+                    deleteOption.onclick = async function (e) {
+                        e.preventDefault(); // Prevent link navigation
                         const deleteUrl = `http://192.168.59.133:8000/api/${id}/delete`; // Ensure `id` is set correctly
                         try {
-                            // Send a DELETE request to the API
                             const response = await fetch(deleteUrl, {
                                 method: "DELETE",
                             });
 
                             if (response.ok) {
-                                // Parse the JSON response
                                 const responseData = await response.json();
-
-                                // Show the message in a Bootstrap modal
                                 if (responseData.message) {
                                     showBootstrapModal(responseData.message);
                                 }
@@ -243,15 +268,36 @@
                         }
                     };
 
-                    message.textContent = username2 + ' : ' + value;
-                    message.className = "alert alert-info mb-2 p-2";
+                    // Add the delete option to the dropdown
+                    optionsDropdown.appendChild(deleteOption);
 
-                    // Append the delete button to the message div
-                    message.appendChild(deleteButton);
+                    // Toggle dropdown visibility when options button is clicked
+                    optionsButton.onclick = function (e) {
+                        e.stopPropagation(); // Prevent event bubbling
+                        optionsDropdown.style.display =
+                            optionsDropdown.style.display === "none" ? "block" : "none";
+                    };
+
+                    // Hide the dropdown when clicking outside
+                    document.addEventListener("click", function (e) {
+                        if (!optionsButton.contains(e.target) && !optionsDropdown.contains(e.target)) {
+                            optionsDropdown.style.display = "none";
+                        }
+                    });
+
+                    // Add the message content and dropdown
+                    message.textContent = username2 + " : " + value;
+                    message.className = "alert alert-info mb-2 p-2 position-relative"; // Add position-relative for proper positioning
+                    message.style.backgroundColor = "##002b5c"; // Dark background for message
+                    message.style.color = "#fff"; // White text
+                    message.appendChild(optionsButton);
+                    message.appendChild(optionsDropdown);
 
                     messagesDiv.appendChild(message);
                     messagesDiv.scrollTop = messagesDiv.scrollHeight; // Auto-scroll
                 };
+
+
 
 
 
