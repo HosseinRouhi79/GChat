@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-03-09T10:28:06.733+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-03-09T10:28:06.747+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-03-09T10:28:21.597+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000151478,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:28:21.674+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.024255997,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:28:21.689+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/swagger/swagger-ui.css","Latency":0.054587777,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-03-09T10:28:21.697+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.048388339,"Category":"RequestResponse","SubCategory":"Api","Path":"/swagger/swagger-ui-bundle.js"}
+{"level":"info","ts":"2025-03-09T10:28:21.962+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/doc.json","Latency":0.00063788,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:28:22.042+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/favicon-32x32.png","Latency":0.000042638,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:28:29.375+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users","Latency":0.010161802,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:41:32.300+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login/","Latency":0.000000518,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-03-09T10:41:35.085+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/up-login/","Latency":0.000000854,"Category":"RequestResponse","SubCategory":"Api"}

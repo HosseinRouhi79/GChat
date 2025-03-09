@@ -213,7 +213,7 @@ func (userService *UserService) UserPassLogin(dto dto.LoginByUsernameDto) (token
 		errNew := errors.New("user not found")
 		return nil, errNew
 	}
-	tdto := TokenDto{UserName: user.Username}
+	tdto := TokenDto{UserName: user.Username, UserID: user.Id}
 	tokenDetail2, err := userService.Token.GenerateToken(&tdto)
 	if err != nil {
 		userService.Logger.Info(logging.Internal, logging.Select, err.Error(), nil)

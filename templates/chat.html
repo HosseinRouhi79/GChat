@@ -3,97 +3,165 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gin WebSocket Chat</title>
+        <title>Modern Chat App</title>
+        
+        <!-- HTMX -->
         <script src="https://unpkg.com/htmx.org"></script>
+        
+        <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    
+        
+        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Custom Styles -->
         <style>
             body {
-                background-color: #001f3f; /* Dark blue background */
-                color: #ffffff; /* White text */
-                font-family: Calibri, sans-serif;
+                background: linear-gradient(135deg, #1c1c1e, #2c2c2e); /* Dark gradient background */
+                color: #eaeaea; /* Light gray text */
+                font-family: 'Inter', sans-serif; /* Modern sans-serif font */
             }
+    
             #messages {
                 height: 300px;
-                overflow-y: scroll;
-                background-color: #002b5c; /* Darker blue */
-                color: #ffffff; /* White text */
-                border: 1px solid #ffffff; /* White border */
-                padding: 10px;
+                overflow-y: auto;
+                background: #292929; /* Subtle dark gray for messages area */
+                color: #f0f0f0; /* Light text for readability */
+                border: none;
+                border-radius: 12px; /* Smooth corners */
+                padding: 1rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Soft shadow */
             }
+    
             .alert {
-                background-color: #003d80; /* Lighter dark blue */
-                color: #ffffff; /* White text */
-                border: 1px solid #ffffff; /* White border */
-            }
-            .btn-primary {
-                background-color: #00509e; /* Bright blue */
-                color: #ffffff; /* White text */
-                border-color: #00509e; /* Match blue theme */
-            }
-            .btn-primary:hover {
-                background-color: #003d80; /* Darker blue on hover */
+                background: #444; /* Neutral gray tone for alert background */
                 color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                padding: 0.8rem;
             }
+    
+            .btn-primary {
+                background: #4caf50; /* Green for primary action */
+                color: #ffffff;
+                border: none;
+                border-radius: 20px; /* Rounded button */
+                padding: 0.6rem 1.5rem;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            }
+    
+            .btn-primary:hover {
+                background: #3b8c42; /* Darker green for hover effect */
+                box-shadow: 0 6px 12px rgba(76, 175, 80, 0.5);
+            }
+    
             input {
-                background-color: #002b5c; /* Match darker blue background */
-                color: #ffffff; /* White text */
-                border: 1px solid #ffffff; /* White border */
+                background: #333; /* Dark input background */
+                color: #eaeaea; /* Light text for inputs */
+                border: 1px solid #555; /* Subtle border */
+                border-radius: 10px; /* Smooth input corners */
+                padding: 0.6rem;
+                transition: all 0.3s ease;
             }
+    
+            input:focus {
+                border-color: #4caf50; /* Green focus border */
+                outline: none;
+                box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+            }
+    
             input::placeholder {
-                color: #80bfff; /* Light blue placeholder text */
+                color: #a8a8a8; /* Softer placeholder color */
             }
     
-            /* Neon Light Effect for Title */
+            /* Green circle */
+            .neon-circle {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin-right: 10px;
+                border-radius: 50%;
+                background-color: #0fa;
+                box-shadow: 
+                    0 0 7px #0fa, 
+                    0 0 10px #0fa, 
+                    0 0 21px #0fa, 
+                    0 0 42px #0fa, 
+                    0 0 82px #0fa, 
+                    0 0 92px #0fa, 
+                    0 0 102px #0fa, 
+                    0 0 151px #0fa;
+            }
+            /* Chat Title with Modern Glow Effect */
             .neon-text {
-                font-size: 2rem;
-                font-weight: bold;
+                font-size: 2.5rem;
+                font-weight: 700;
                 text-align: center;
-                color: #ffffff; /* White text */
+                color: #4caf50; /* Green text */
                 text-shadow: 
-                    0 0 5px #ffffff,
-                    0 0 10px #ffffff,
-                    0 0 20px #80bfff,
-                    0 0 40px #80bfff,
-                    0 0 80px #80bfff,
-                    0 0 90px #80bfff;
-                    animation: flicker 3s infinite;
+                    0 0 8px #4caf50,
+                    0 0 16px #4caf50,
+                    0 0 24px #4caf50,
+                    0 0 40px #4caf50;
+                margin-bottom: 1rem;
             }
     
-             /* Flicker animation */
-             @keyframes flicker {
-                0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                    opacity: 1; /* Fully lit */
-                    text-shadow: 
-                        0 0 5px #ffffff,
-                        0 0 10px #ffffff,
-                        0 0 20px #80bfff,
-                        0 0 40px #80bfff,
-                        0 0 80px #80bfff;
+            /* Add subtle fade-in animations */
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    transform: translateY(10px);
                 }
-                19%, 21%, 24%, 54%, 56% {
-                    opacity: 0.5; /* Dim light */
-                    text-shadow: 
-                        0 0 2px #80bfff,
-                        0 0 4px #80bfff,
-                        0 0 8px #80bfff;
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
                 }
-                20%, 55% {
-                    opacity: 0; /* Light off */
-                    text-shadow: none;
-                }
+            }
+    
+            body, #messages, .btn-primary {
+                animation: fadeIn 1s ease-in-out;
+            }
+    
+            /* Smooth Scroll for Messages */
+            #messages::-webkit-scrollbar {
+                width: 8px;
+            }
+    
+            #messages::-webkit-scrollbar-thumb {
+                background: #4caf50; /* Green scrollbar thumb */
+                border-radius: 4px;
+            }
+    
+            #messages::-webkit-scrollbar-track {
+                background: #292929; /* Match messages background */
+            }
+
+            #active-users {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 10vh;
             }
         </style>
     </head>
+    
 <body>
     <div class="container py-5">
         <!-- Greeting box -->
         <div id="greeting" class="alert alert-primary text-center d-none"></div>
+        <div id="active-users" class="alert alert-primary text-center d-none">
+            <span class="neon-circle"></span>
+        </div>
 
-        <h1 class="neon-text mb-4">WebSocket Chat</h1>
+        <!-- <h1 class="neon-text mb-4">WebSocket Chat</h1> -->
 
         <div id="messages" class="rounded mb-3"></div>
 
@@ -118,23 +186,28 @@
         function showBootstrapModal(message) {
             // Create modal structure
             const modalHTML = `
-                <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="text-danger" id="responseModalLabel">Server Response</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+                            <div class="modal-header" style="background-color: #4caf50; color: #ffffff; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                                <h5 class="modal-title" id="responseModalLabel">Server Response</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <div class="alert alert-info">${message}</div>
+                            <div class="modal-body text-center" style="padding: 30px; background-color: #f8f9fa;">
+                                <div class="alert" style="font-size: 1.1rem; color: #ffffff; background-color: #4caf50; padding: 20px; border-radius: 8px; border: none;">
+                                    ${message}
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div class="modal-footer justify-content-center" style="padding: 15px; background-color: #f1f3f5; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+                                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
+
 
             // Append modal to the body
             document.body.insertAdjacentHTML('beforeend', modalHTML);
@@ -180,6 +253,9 @@
                         // Enable the input and button
                         messageInput.disabled = false;
                         sendButton.disabled = false;
+
+                        // Fetch and display active users
+                        fetchActiveUsers();
                     } else {
                         console.warn('Username not found in the claims object');
                     }
@@ -194,8 +270,7 @@
             // Initialize WebSocket only if checker is true
             if (checker) {
                 
-                const ws = new WebSocket("ws://192.168.59.133:8000/ws");
-
+                const ws = new WebSocket("ws://192.168.136.129:8000/ws");
                 // Listen for messages
                 ws.onmessage = function (event) {
                     const messagesDiv = document.getElementById("messages");
@@ -224,31 +299,50 @@
 
                     // Create the dropdown container for options
                     const optionsDropdown = document.createElement("div");
-                    optionsDropdown.className = "dropdown-menu";
+                    optionsDropdown.className = "dropdown-menu shadow-lg"; // Bootstrap dropdown class with shadow for a modern look
                     optionsDropdown.style.position = "absolute";
-                    optionsDropdown.style.top = "30px"; // Dropdown position below the button
-                    optionsDropdown.style.right = "10px"; // Align with the button
+                    optionsDropdown.style.top = "40px"; // Adjusted for better spacing below the button
+                    optionsDropdown.style.right = "0"; // Aligns perfectly with the parent button
                     optionsDropdown.style.display = "none"; // Initially hidden
-                    optionsDropdown.style.backgroundColor = "#80bfff";
-                    optionsDropdown.style.color = "#fff"; // White text
-                    optionsDropdown.style.border = "1px solid #444"; // Border color
-                    optionsDropdown.style.borderRadius = "4px"; // Rounded corners
-                    optionsDropdown.style.zIndex = "1000";
+                    optionsDropdown.style.backgroundColor = "#4caf50"; // Modern green background
+                    optionsDropdown.style.color = "#ffffff"; // White text for contrast
+                    optionsDropdown.style.border = "none"; // Clean, borderless style
+                    optionsDropdown.style.borderRadius = "8px"; // Smooth rounded corners
+                    optionsDropdown.style.padding = "10px 0"; // Add spacing inside the dropdown
+                    optionsDropdown.style.zIndex = "1050"; // Higher z-index for proper stacking
+
+                    // Add hover effects for items inside the dropdown (optional, if populated dynamically)
+                    optionsDropdown.style.transition = "transform 0.3s ease, opacity 0.3s ease"; // Smooth animations for appearance
 
                     // Add Delete option to the dropdown
                     const deleteOption = document.createElement("a");
-                    deleteOption.className = "dropdown-item";
+                    deleteOption.className = "dropdown-item d-flex align-items-center justify-content-between";
                     deleteOption.href = "#";
                     deleteOption.textContent = "Delete";
-                    deleteOption.style.color = "red"; // Text color
-                    deleteOption.style.padding = "8px 12px"; // Padding
-                    deleteOption.style.cursor = "pointer";
+                    deleteOption.style.color = "#ffffff"; // Modern green text color
+                    deleteOption.style.padding = "10px 15px"; // Updated padding for better spacing
+                    deleteOption.style.cursor = "pointer"; // Pointer cursor for interactivity
+                    deleteOption.style.transition = "color 0.3s ease, background-color 0.3s ease"; // Smooth hover transition
+
+                    // Add hover effect for modern interaction
+                    deleteOption.addEventListener("mouseover", () => {
+                        deleteOption.style.backgroundColor = "#e8f5e9"; // Light green background on hover
+                        deleteOption.style.color = "#388e3c"; // Darker green for hover text
+                    });
+                    deleteOption.addEventListener("mouseout", () => {
+                        deleteOption.style.backgroundColor = "transparent"; // Reset background
+                        deleteOption.style.color = "#4caf50"; // Reset text color
+                    });
                     deleteOption.onclick = async function (e) {
                         e.preventDefault(); // Prevent link navigation
-                        const deleteUrl = `http://192.168.59.133:8000/api/${id}/delete`; // Ensure `id` is set correctly
+                        const deleteUrl = `http://192.168.136.129:8000/api/${id}/delete`; // Ensure `id` is set correctly
                         try {
                             const response = await fetch(deleteUrl, {
                                 method: "DELETE",
+                                headers: {
+                                'Authorization': `Bearer ${jwtToken.accessToken}`,
+                                'Accept': 'application/json',
+                                  }
                             });
 
                             if (response.ok) {
@@ -260,8 +354,14 @@
                                 // Remove the message from the UI
                                 messagesDiv.removeChild(message);
                                 console.log("Message deleted successfully.");
-                            } else {
-                                console.error("Failed to delete message. Status:", response.status);
+                            } else   {
+                                const responseData = await response.json();
+                                if (responseData.message) {
+                                    showBootstrapModal(responseData.message); // Show the modal with the message
+                                } else {
+                                    showBootstrapModal("An error occurred. Please try again."); // Fallback for no message
+                                }
+                                
                             }
                         } catch (error) {
                             console.error("Error while deleting message:", error);
@@ -298,21 +398,26 @@
                 };
 
 
-
-
-
-                // Send message on form submission
                 window.sendMessage = function(event) {
-                    event.preventDefault();
-                    const input = document.querySelector("[name=message]");
-                    const message = input.value;
-                    const greetingDiv = document.getElementById('greeting');
-                    const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
+                event.preventDefault();
+                
+                const input = document.querySelector("[name=message]");
+                const message = input.value;
+                const greetingDiv = document.getElementById('greeting');
+                const username = greetingDiv.textContent.replace("Hi ", "").replace("!", "").trim();
+                
+                // Ensure ws is open before sending
+                if (ws.readyState === WebSocket.OPEN) {
                     ws.send(JSON.stringify(username + " : " + message));
-                    input.value = ""; // Clear the input
-                };
+                } else {
+                    console.error("ws is not open. Ready state:", ws.readyState);
+                }
+                
+                input.value = ""; // Clear the input
+            };
             }
         });
+    
     </script>
 </body>
 </html>

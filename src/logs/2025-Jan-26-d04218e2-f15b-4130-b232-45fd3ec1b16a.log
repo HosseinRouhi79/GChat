@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-01-26T15:18:41.922+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2025-01-26T15:18:41.934+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-26T15:19:34.515+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/up-login/","Latency":0.00000108}
+{"level":"info","ts":"2025-01-26T15:19:49.412+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/login","Latency":0.000270174,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-26T15:19:56.135+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000023766,"Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico"}
+{"level":"info","ts":"2025-01-26T15:20:03.675+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/up-login","Latency":0.09628232,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-26T15:20:08.877+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.002617916,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-26T15:20:09.995+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.00149389,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-26T15:20:10.317+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.001583346,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-26T15:20:10.324+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico","Latency":0.000018073}
+{"level":"info","ts":"2025-01-26T15:21:00.589+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000091993,"Category":"RequestResponse","SubCategory":"Api"}

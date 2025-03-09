@@ -1,0 +1,16 @@
+{"level":"info","ts":"2025-02-09T14:59:53.212+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-09T14:59:53.222+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-09T14:59:55.457+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/chat","Latency":0.000975023,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-09T14:59:55.933+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/claim","Latency":0.000109285}
+{"level":"info","ts":"2025-02-09T14:59:55.979+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico","Latency":0.00004234}
+{"level":"info","ts":"2025-02-09T14:59:59.023+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users/active","Latency":3.032618856,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T14:59:59.024+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T14:59:59.025+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws2","Latency":3.082169124,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:00:02.091+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:00:09.749+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:00:12.826+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:00:15.890+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:00:18.959+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:00:22.129+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.018430491,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/101/delete"}
+{"level":"info","ts":"2025-02-09T15:00:25.492+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/100/delete","Latency":0.017237157,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:00:27.668+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/99/delete","Latency":0.02352487,"Category":"RequestResponse"}

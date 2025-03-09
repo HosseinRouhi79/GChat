@@ -1,0 +1,16 @@
+{"level":"info","ts":"2025-02-03T18:34:34.610+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-03T18:34:34.621+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Postgres"}
+{"level":"info","ts":"2025-02-03T18:34:40.520+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:40.521+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.014460488,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:42.991+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:42.991+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register","Latency":0.01181749,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-03T18:34:43.550+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:43.550+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.01190933,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:43.732+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:43.732+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/register","Latency":0.010250675,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-03T18:34:43.914+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:43.914+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.010651607,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:44.101+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:44.102+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.009789651,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-03T18:34:44.270+0330","msg":"Record(email) not found","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Category":"Postgres"}
+{"level":"info","ts":"2025-02-03T18:34:44.270+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/register","Latency":0.010288009,"Category":"RequestResponse","SubCategory":"Api"}

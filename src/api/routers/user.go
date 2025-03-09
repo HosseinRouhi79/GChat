@@ -10,3 +10,8 @@ func SetOtp(r *gin.RouterGroup) {
 	handler := handlers.UserHandler{}
 	r.POST("/send-otp", handler.SendOtp)
 }
+func GetAllUsers(r *gin.RouterGroup) {
+	r.GET("/users", handlers.GetAllUsers)
+}
+
+

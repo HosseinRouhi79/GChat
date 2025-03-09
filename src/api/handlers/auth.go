@@ -178,6 +178,7 @@ func (t TokenHandler) GetClaims(c *gin.Context) {
 	// 	return
 	// }
 
+	
 	tokenService := services.NewTokenService(cfg)
 	token := strings.Split(auth, " ")
 	accessToken := token[1]

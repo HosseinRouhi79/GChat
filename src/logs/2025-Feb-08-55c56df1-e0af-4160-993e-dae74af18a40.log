@@ -1,0 +1,12 @@
+{"level":"info","ts":"2025-02-08T15:11:08.046+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-08T15:11:08.055+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-08T15:11:12.728+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.001104897,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-08T15:11:12.966+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000101361,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-08T15:11:12.967+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/favicon.ico","Latency":0.000011924,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-08T15:11:13.011+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000743433,"Category":"RequestResponse","SubCategory":"Api","Path":"/api/users/active"}
+{"level":"info","ts":"2025-02-08T15:11:40.818+0330","msg":"result is:[user1]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-08T15:11:41.639+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/chat","Latency":0.000774961}
+{"level":"info","ts":"2025-02-08T15:11:41.644+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws","Latency":28.684279246,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-08T15:11:41.871+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/api/claim","Latency":0.000092505,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-08T15:11:41.872+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000009617,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-08T15:11:41.925+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users/active","Latency":0.003838337,"Category":"RequestResponse","SubCategory":"Api"}

@@ -1,0 +1,11 @@
+{"level":"info","ts":"2025-01-27T16:41:09.023+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Redis","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-27T16:41:09.239+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-01-27T16:41:17.746+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/login","Latency":0.00031016,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:19.681+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000017132,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:33.100+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/up-login","Latency":0.481961701}
+{"level":"info","ts":"2025-01-27T16:41:34.772+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.00194052,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:35.339+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.002057148,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:35.938+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.00017303,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:35.982+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/favicon.ico","Latency":0.000014985,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-01-27T16:41:44.028+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/api/3/delete","Latency":0.011781915}
+{"level":"info","ts":"2025-01-27T16:41:47.007+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/49/delete","Latency":0.054079017,"Category":"RequestResponse","SubCategory":"Api"}

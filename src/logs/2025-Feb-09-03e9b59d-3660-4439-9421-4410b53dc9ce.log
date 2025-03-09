@@ -1,0 +1,30 @@
+{"level":"info","ts":"2025-02-09T15:02:23.438+0330","msg":"Redis connected successfully","AppName":"myApp","LoggerName":"Zap","SubCategory":"Migration","Category":"Redis"}
+{"level":"info","ts":"2025-02-09T15:02:23.449+0330","msg":"Postgres connected successfully","AppName":"myApp","LoggerName":"Zap","Category":"Postgres","SubCategory":"Migration"}
+{"level":"info","ts":"2025-02-09T15:02:25.493+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.001763087,"Category":"RequestResponse","SubCategory":"Api","Path":"/chat"}
+{"level":"info","ts":"2025-02-09T15:02:25.883+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000179975,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:02:25.899+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws2","Latency":0.000025435,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:02:25.935+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000018155,"Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico"}
+{"level":"info","ts":"2025-02-09T15:02:29.004+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:02:29.005+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users/active","Latency":3.064467183,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:02:32.080+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:03:35.467+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/chat","Latency":0.001199823,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:35.476+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws","Latency":69.596315742,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:35.928+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000158044,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:35.946+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws2","Latency":0.000263562,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:35.975+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/favicon.ico","Latency":0.00001626,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-09T15:03:41.358+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:03:44.432+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:03:47.896+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":0.000905302,"Category":"RequestResponse","SubCategory":"Api","Path":"/chat"}
+{"level":"info","ts":"2025-02-09T15:03:47.907+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Latency":11.978977703,"Category":"RequestResponse","SubCategory":"Api","Path":"/ws"}
+{"level":"info","ts":"2025-02-09T15:03:48.280+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/claim","Latency":0.000070638,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:48.291+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/ws2","Latency":0.000011772,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:03:48.324+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Category":"RequestResponse","SubCategory":"Api","Path":"/favicon.ico","Latency":0.000026355}
+{"level":"info","ts":"2025-02-09T15:03:54.512+0330","msg":"failed to get from redis:[dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:03:57.588+0330","msg":"failed to set data in Redis: [dial tcp 172.19.0.3:6379: connect: no route to host]","AppName":"myApp","LoggerName":"Zap"}
+{"level":"info","ts":"2025-02-09T15:05:17.659+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/index.html","Latency":0.000118232,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:05:17.711+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-bundle.js","Latency":0.021571196,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:05:17.712+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui-standalone-preset.js","Latency":0.018200729,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:05:17.724+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/swagger/swagger-ui.css","Latency":0.008980406,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:05:17.979+0330","msg":"","AppName":"myApp","LoggerName":"Zap","SubCategory":"Api","Path":"/swagger/doc.json","Latency":0.00037015,"Category":"RequestResponse"}
+{"level":"info","ts":"2025-02-09T15:05:25.847+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users/active","Latency":3.066591559,"Category":"RequestResponse","SubCategory":"Api"}
+{"level":"info","ts":"2025-02-09T15:05:33.580+0330","msg":"","AppName":"myApp","LoggerName":"Zap","Path":"/api/users/active","Latency":3.056544118,"Category":"RequestResponse","SubCategory":"Api"}

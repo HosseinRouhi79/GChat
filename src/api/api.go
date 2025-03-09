@@ -5,6 +5,7 @@ import (
 	"chat/data/db"
 	"chat/data/models"
 	"chat/docs"
+	"chat/src/api/handlers"
 	"chat/src/api/middlewares/middlewares"
 	"chat/src/api/routers"
 	"chat/src/api/validation"
@@ -37,25 +38,6 @@ func getPreviousMessages(db *gorm.DB, ch chan map[string]interface{}) []models.M
 		return nil
 	}
 	return messages
-}
-
-func deleteMessage(c *gin.Context) {
-	db := db.GetDB()
-	id := c.Param("id")
-
-	// Find the user by ID
-	var message models.Message
-	if err := db.First(&message, id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Message not found"})
-		return
-	}
-
-	// Delete the user
-	if err := db.Delete(&message).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete message"})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"message": "Message deleted successfully"})
 }
 
 func handleWebSocket(c *gin.Context) {
@@ -112,6 +94,7 @@ func handleWebSocket(c *gin.Context) {
 			"value":    msg.Value,
 			"id":       msg.Id,
 		}
+
 		broadcast <- msgMap
 	}
 }
@@ -131,6 +114,7 @@ func handleMessages() {
 		}
 	}
 }
+
 func InitServer(cfg *config.Config) {
 	r := gin.New()
 	RegisterMainValidation()
@@ -153,7 +137,8 @@ func InitServer(cfg *config.Config) {
 			"heading": "Welcome to the Gin HTMX Example!",
 		})
 	})
-	r.DELETE("/api/:id/delete", deleteMessage)
+	r.DELETE("/api/users/:id", handlers.DeleteUser)
+	r.GET("/api/users/active", handlers.GetActiveUsers)
 	RegisterRoute(r)
 	RegisterSwagger(r, cfg)
 	if err := r.Run(fmt.Sprintf(":%s", cfg.Server.InternalPort)); err != nil {
@@ -180,7 +165,7 @@ func RegisterSwagger(r *gin.Engine, cfg *config.Config) {
 	docs.SwaggerInfo.Description = "golang web api"
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.BasePath = "/api"
-	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.59.133:%s", cfg.Server.ExternalPort)
+	docs.SwaggerInfo.Host = fmt.Sprintf("192.168.136.129:%s", cfg.Server.ExternalPort)
 	docs.SwaggerInfo.Schemes = []string{"http"}
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
@@ -227,7 +212,16 @@ func RegisterRoute(r *gin.Engine) {
 	v7 := r.Group("/")
 	{
 		formGroup := v7.Group("")
-		routers.GetJWT(formGroup)
 		routers.Auth2(formGroup)
+	}
+	v8 := r.Group("/api/")
+	{
+		formGroup := v8.Group("")
+		routers.RouteMessage(formGroup)
+	}
+	v9 := r.Group("/api/")
+	{
+		formGroup := v9.Group("")
+		routers.GetAllUsers(formGroup)
 	}
 }

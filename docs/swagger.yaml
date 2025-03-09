@@ -187,6 +187,77 @@ paths:
       summary: User Auth up
       tags:
       - auth
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of all users from the system.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of users
+          schema:
+            items:
+              $ref: '#/definitions/helper.HTTPResponse'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Get all users
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a user with the specified ID from the system.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Delete a user by ID
+      tags:
+      - users
+  /users/active:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of all users from the system.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of active users
+          schema:
+            items:
+              $ref: '#/definitions/helper.HTTPResponse'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/helper.HTTPResponse'
+      summary: Get active users
+      tags:
+      - users
   /v1/health/:
     get:
       consumes:
